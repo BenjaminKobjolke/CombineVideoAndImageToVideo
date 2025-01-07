@@ -56,6 +56,8 @@ This Python script combines a video with an image, placing the video on top and 
 │   └── image.png      # Your input image
 ├── output/            # Output directory for combined videos
 ├── venv/              # Python virtual environment (created by install.bat)
+
+
 ├── .gitignore         # Git ignore file
 ├── activate_environment.bat  # Script to activate virtual environment
 ├── combine_video_image.py   # Main Python script
@@ -66,7 +68,7 @@ This Python script combines a video with an image, placing the video on top and 
 
 ## Example Output
 
-<video src='https://github.com/BenjaminKobjolke/CombineVideoAndImageToVideo/raw/refs/heads/main/output_example/output.mp4' width=500 controls autoplay/>
+<video src='https://github.com/user-attachments/assets/53ecbe9f-e06a-4dd5-b80d-c32617b7d53e' mute width=500 controls autoplay/>
 
 This example demonstrates how the script combines a video with an image, placing the video on top and the image below it.
 
