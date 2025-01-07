@@ -66,7 +66,7 @@ This Python script combines a video with an image, placing the video on top and 
 
 ## Example Output
 
-<video src='output_example/output.mp4' width=500 controls autoplay/>
+<video src='https://github.com/BenjaminKobjolke/CombineVideoAndImageToVideo/raw/refs/heads/main/output_example/output.mp4' width=500 controls autoplay/>
 
 This example demonstrates how the script combines a video with an image, placing the video on top and the image below it.
 
