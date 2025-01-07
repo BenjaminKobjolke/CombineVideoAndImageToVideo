@@ -1,0 +1,11 @@
+# Input and output directories
+input/
+output/
+
+# Python virtual environment
+venv/
+
+# Python cache files
+__pycache__/
+*.py[cod]
+*$py.class
