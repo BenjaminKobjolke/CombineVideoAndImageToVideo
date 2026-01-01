@@ -9,3 +9,6 @@ venv/
 __pycache__/
 *.py[cod]
 *$py.class
+image.jpg
+output.mp4
+video.mp4
