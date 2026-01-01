@@ -1,6 +1,6 @@
 # Video and Image Combiner
 
-This Python script combines a video with an image, placing the video on top and the image below it. It supports cropping the bottom portion of the video and provides various command-line options for customization.
+This Python script combines a video with an image vertically. You can choose whether to place the image above or below the video. It supports cropping the bottom portion of the video and provides various command-line options for customization.
 
 ## Requirements
 
@@ -31,8 +31,11 @@ This Python script combines a video with an image, placing the video on top and 
 3. Run the script:
 
    ```batch
-   # Basic usage with default paths
+   # Basic usage with default paths (image below video)
    python combine_video_image.py
+
+   # Place image on top of video
+   python combine_video_image.py --image-position top
 
    # Crop 50 pixels from bottom of video
    python combine_video_image.py --crop-bottom 50
@@ -47,6 +50,7 @@ This Python script combines a video with an image, placing the video on top and 
 - `--image`: Path to input image file (default: 'input/image.png')
 - `--output`: Path to output video file (default: 'output/output.mp4')
 - `--crop-bottom`: Number of pixels to crop from bottom of video (default: 0)
+- `--image-position`: Position of image relative to video, either 'top' or 'bottom' (default: 'bottom')
 
 ## Project Structure
 
@@ -70,7 +74,7 @@ This Python script combines a video with an image, placing the video on top and 
 
 ![output](https://github.com/user-attachments/assets/a8b24a88-ad10-4299-893b-71c41aab39a9)
 
-This example demonstrates how the script combines a video with an image, placing the video on top and the image below it.
+This example demonstrates how the script combines a video with an image. Use `--image-position top` to place the image above the video, or `--image-position bottom` (default) to place it below.
 
 ## Notes
 
