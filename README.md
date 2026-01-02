@@ -4,70 +4,93 @@ This Python script combines a video with an image vertically. You can choose whe
 
 ## Requirements
 
-- Python 3.x
+- Python 3.11+
+- [uv](https://docs.astral.sh/uv/) package manager
 - Windows OS
 
 ## Installation
 
 1. Clone or download this repository
-2. Run `install.bat` to:
-   - Create a Python virtual environment
-   - Install required dependencies
+2. Run `install.bat` to install dependencies with uv
 
 ## Usage
 
-1. Prepare your files:
+### Using start.bat (recommended)
 
-   - Place your video in the `input` folder as `video.mp4`
-   - Place your image in the `input` folder as `image.png`
-   - Or use custom paths with command-line arguments
+```batch
+# Show help
+start.bat --help
 
-2. Activate the virtual environment:
+# Basic usage with default paths (image below video)
+start.bat
 
-   ```batch
-   activate_environment.bat
-   ```
+# Place image on top of video
+start.bat --image-position top
 
-3. Run the script:
+# Crop 50 pixels from bottom of video
+start.bat --crop-bottom 50
 
-   ```batch
-   # Basic usage with default paths (image below video)
-   python combine_video_image.py
+# Custom input/output paths
+start.bat --video custom_video.mp4 --image custom_image.png --output output/custom_output.mp4
 
-   # Place image on top of video
-   python combine_video_image.py --image-position top
+# Folder mode - combine all assets in a folder
+start.bat --input folder_path --constraint width
+```
 
-   # Crop 50 pixels from bottom of video
-   python combine_video_image.py --crop-bottom 50
+### Using uv directly
 
-   # Custom input/output paths
-   python combine_video_image.py --video custom_video.mp4 --image custom_image.png --output output/custom_output.mp4
-   ```
+```batch
+uv run python combine_video_image.py --help
+```
 
 ## Command Line Arguments
 
+- `--input`: Path to folder containing media files (folder mode)
 - `--video`: Path to input video file (default: 'input/video.mp4')
 - `--image`: Path to input image file (default: 'input/image.png')
 - `--output`: Path to output video file (default: 'output/output.mp4')
+- `--constraint`: Scaling constraint: 'width' or 'height' (folder mode)
 - `--crop-bottom`: Number of pixels to crop from bottom of video (default: 0)
 - `--image-position`: Position of image relative to video, either 'top' or 'bottom' (default: 'bottom')
 
 ## Project Structure
 
 ```
-├── input/              # Input files directory
-│   ├── video.mp4      # Your input video
-│   └── image.png      # Your input image
-├── output/            # Output directory for combined videos
-├── venv/              # Python virtual environment (created by install.bat)
+├── input/                  # Input files directory
+│   ├── video.mp4          # Your input video
+│   └── image.png          # Your input image
+├── output/                 # Output directory for combined videos
+├── src/                    # Source code package
+│   ├── config/            # Configuration module
+│   │   ├── constants.py   # String constants
+│   │   └── settings.py    # Environment settings
+│   ├── asset.py           # Asset classes (ImageAsset, VideoAsset)
+│   ├── cli.py             # Command-line argument parsing
+│   ├── combiner.py        # Video combining logic
+│   └── utils.py           # Utility functions
+├── tests/                  # Pytest test suite
+├── tools/                  # Development tools
+│   └── tests.bat          # Run test suite
+├── .gitignore
+├── combine_video_image.py  # Main entry point
+├── install.bat             # Installation script (uses uv)
+├── pyproject.toml          # Project configuration
+├── start.bat               # Run the application
+└── README.md
+```
 
+## Development
 
-├── .gitignore         # Git ignore file
-├── activate_environment.bat  # Script to activate virtual environment
-├── combine_video_image.py   # Main Python script
-├── install.bat        # Installation script
-├── requirements.txt   # Python dependencies
-└── README.md         # This file
+### Running Tests
+
+```batch
+tools\tests.bat
+```
+
+Or directly:
+
+```batch
+uv run pytest tests/ -v
 ```
 
 ## Example Output
@@ -80,3 +103,4 @@ This example demonstrates how the script combines a video with an image. Use `--
 
 - The script will automatically create the output directory if it doesn't exist
 - Input and output directories are ignored by git to avoid committing large media files
+- Environment variables can override default paths (see `src/config/settings.py`)
