@@ -1,19 +1,25 @@
 @echo off
-echo Creating Python virtual environment...
-python -m venv venv
+echo Checking for uv installation...
+where uv >nul 2>&1
+if errorlevel 1 (
+    echo uv is not installed. Please install it first:
+    echo   https://docs.astral.sh/uv/getting-started/installation/
+    pause
+    exit /b 1
+)
 echo.
 
-echo Activating virtual environment...
-call venv\Scripts\activate.bat
+echo Installing dependencies with uv...
+uv sync --all-extras
 echo.
 
-echo Installing requirements...
-pip install -r requirements.txt
+echo Verifying installation...
+uv run python -c "import cv2; import numpy; print('Dependencies installed successfully!')"
 echo.
 
 echo Installation complete! You can now:
-echo 1. Run 'activate_environment.bat' to activate the virtual environment
-echo 2. Use the script with: python combine_video_image.py --help
+echo 1. Run the tool with: start.bat --help
+echo 2. Run tests with: tools\tests.bat
 echo.
 
 pause
