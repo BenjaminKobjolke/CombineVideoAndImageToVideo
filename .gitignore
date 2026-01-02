@@ -4,11 +4,24 @@ output/
 
 # Python virtual environment
 venv/
+.venv/
 
 # Python cache files
 __pycache__/
 *.py[cod]
 *$py.class
+.pytest_cache/
+
+# Test media files
 image.jpg
 output.mp4
 video.mp4
+test.mp4
+*.mp4
+
+# Claude Code
+.claude/
+
+# IDE
+.idea/
+.vscode/
